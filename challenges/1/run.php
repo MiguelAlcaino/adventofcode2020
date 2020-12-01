@@ -96,8 +96,12 @@ function part2(array $lines, OutputInterface $output): void
         function (InputInterface $input, OutputInterface $output) {
             $lines = getNumbers();
 
+            $start = microtime(true);
             part1($lines, $output);
             part2($lines, $output);
+            $diff = microtime(true) - $start;
+
+            $output->writeln(sprintf('Time to calculate %s seconds',$diff));
 
             return Command::SUCCESS;
         }
