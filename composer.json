@@ -1,0 +1,14 @@
+{
+    "name": "miguelalcaino/adventofcode-2020-1",
+    "authors": [
+        {
+            "name": "Miguel Alcaino",
+            "email": "miguel.alcaino@ogb.cl"
+        }
+    ],
+    "require": {
+        "php": "7.1",
+        "symfony/console": "^5.2",
+        "symfony/finder": "^5.2"
+    }
+}
