@@ -6,6 +6,11 @@
             "email": "miguel.alcaino@ogb.cl"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "AdventOfCode\\": "src/"
+        }
+    },
     "require": {
         "php": "7.1",
         "symfony/console": "^5.2",
