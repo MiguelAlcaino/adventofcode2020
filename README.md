@@ -1,9 +1,9 @@
-## Progress (1/25)
+## Progress (2/25)
 
 |     | Name | Command | Done    |
 | --- | -----| ------- | ------- |
-| 1   | Report Repair | `./run adventofcode:1` | :bell:  |
-| 2   | | | :zzz:   |
+| 1   | Report Repair | `./run adventofcode:1` | :star2::star2:  |
+| 2   | Password Philosophy | `./run adventofcode:2` | :star2::star2:   |
 | 3   | | | :zzz:   |
 | 4   | | | :zzz:   |
 | 5   | | | :zzz:   |
