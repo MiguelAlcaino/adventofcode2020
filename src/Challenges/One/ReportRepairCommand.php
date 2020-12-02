@@ -13,7 +13,7 @@ class ReportRepairCommand extends Command
 
     protected function configure()
     {
-        $this->setDescription('Advent of Code: Challenge day 1');
+        $this->setDescription('Advent of Code: Challenge day 1 "Report Repair"');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
