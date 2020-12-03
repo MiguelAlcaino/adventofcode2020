@@ -59,6 +59,16 @@ class TobogganTrajectoryCommand extends Command
         $output->writeln(sprintf('This is the product of the trees found: %d', $result));
     }
 
+    /**
+     * @param array                $map     Slops and trees map as a bidimensional array
+     * @param int                  $goRight How many position to go right in each cycle
+     * @param int                  $goDown  How many position to go down in each cycle
+     * @param int                  $column  x axys where to start
+     * @param int                  $row     y axis where to start
+     * @param null|OutputInterface $output  Set this to visually print trees as "X" and positions with no tree as "0"
+     *
+     * @return int
+     */
     private function getNumberOfTreesFound(
         array $map,
         int $goRight = 3,
