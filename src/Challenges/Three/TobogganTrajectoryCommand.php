@@ -43,36 +43,58 @@ class TobogganTrajectoryCommand extends Command
 
     private function part1(array $map, OutputInterface $output)
     {
-        $numberOfTreesFound = $this->getNumberOfTreesFound($map, 0, 0, $output);
+        $numberOfTreesFound = $this->getNumberOfTreesFound($map, 3, 1);
         $output->writeln(sprintf('%d trees were found while going down', $numberOfTreesFound));
     }
 
-    private function getNumberOfTreesFound(array $map, int $column = 0, int $row = 0, OutputInterface $output = null): int
+    private function part2(array $map, OutputInterface $output)
     {
+        $result =
+            $this->getNumberOfTreesFound($map, 1, 1)
+            * $this->getNumberOfTreesFound($map, 3, 1)
+            * $this->getNumberOfTreesFound($map, 5, 1)
+            * $this->getNumberOfTreesFound($map, 7, 1)
+            * $this->getNumberOfTreesFound($map, 1, 2);
+
+        $output->writeln(sprintf('This is the product of the trees found: %d', $result));
+    }
+
+    private function getNumberOfTreesFound(
+        array $map,
+        int $goRight = 3,
+        int $goDown = 1,
+        int $column = 0,
+        int $row = 0,
+        OutputInterface $output = null
+    ): int {
         $mapCopy = $map;
         // Exit condition. To check if we are at the bottom of the map
-        if (!isset($map[$row + 1])) {
+        if (!isset($map[$row + $goDown])) {
             return 0;
         } // If there's no space to the right then attach another map to the right
-        elseif (!isset($map[$row][$column + 3])) {
+        elseif (!isset($map[$row][$column + $goRight])) {
             $numberOfColumnsOfThisRow = count($map[$row]) - $column;
-            $column                   = 3 - $numberOfColumnsOfThisRow;
+            $column                   = $goRight - $numberOfColumnsOfThisRow;
         } else {
-            $column = $column + 3;
+            $column = $column + $goRight;
         }
-        $row  = $row + 1;
+        $row  = $row + $goDown;
         $cell = $map[$row][$column];
 
         if ($cell === '#') {
-            $mapCopy[$row][$column] = 'X';
-            $output->writeln(implode('', $mapCopy[$row]));
+            if (null !== $output) {
+                $mapCopy[$row][$column] = 'X';
+                $output->writeln(implode('', $mapCopy[$row]));
+            }
 
-            return $this->getNumberOfTreesFound($map, $column, $row, $output) + 1;
+            return $this->getNumberOfTreesFound($map, $goRight, $goDown, $column, $row, $output) + 1;
         } else {
-            $mapCopy[$row][$column] = '0';
-            $output->writeln(implode('', $mapCopy[$row]));
+            if (null !== $output) {
+                $mapCopy[$row][$column] = '0';
+                $output->writeln(implode('', $mapCopy[$row]));
+            }
 
-            return $this->getNumberOfTreesFound($map, $column, $row, $output) + 0;
+            return $this->getNumberOfTreesFound($map, $goRight, $goDown, $column, $row, $output) + 0;
         }
     }
 
@@ -82,6 +104,7 @@ class TobogganTrajectoryCommand extends Command
 
         $start = microtime(true);
         $this->part1($map, $output);
+        $this->part2($map, $output);
         $diff = microtime(true) - $start;
 
         $output->writeln(sprintf('Time to calculate %s seconds', $diff));
