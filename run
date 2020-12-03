@@ -5,6 +5,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use AdventOfCode\Challenges\One\ReportRepairCommand;
+use AdventOfCode\Challenges\Three\TobogganTrajectoryCommand;
 use AdventOfCode\Challenges\Two\PasswordPhilosophyCommand;
 use Symfony\Component\Console\Application;
 
@@ -13,7 +14,8 @@ $application = new Application();
 $application->addCommands(
     [
         new ReportRepairCommand(),
-        new PasswordPhilosophyCommand()
+        new PasswordPhilosophyCommand(),
+        new TobogganTrajectoryCommand(),
     ]
 );
 

@@ -4,7 +4,7 @@
 | --- | -----| ------- | ------- |
 | 1   | Report Repair | `./run adventofcode:1` | :star2::star2:  |
 | 2   | Password Philosophy | `./run adventofcode:2` | :star2::star2:   |
-| 3   | | | :zzz:   |
+| 3   | Toboggan Trajectory | `./run adventofcode:3` | :star2: |
 | 4   | | | :zzz:   |
 | 5   | | | :zzz:   |
 | 6   | | | :zzz:   |
