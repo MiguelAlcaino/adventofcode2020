@@ -2,14 +2,22 @@
 
 namespace AdventOfCode\Challenges\One;
 
+use AdventOfCode\Tools\InputExtractor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Finder\Finder;
 
 class ReportRepairCommand extends Command
 {
     protected static $defaultName = 'adventofcode:1';
+
+    private InputExtractor $inputExtractor;
+
+    public function __construct()
+    {
+        $this->inputExtractor = new InputExtractor();
+        parent::__construct();
+    }
 
     protected function configure()
     {
@@ -81,13 +89,7 @@ class ReportRepairCommand extends Command
 
     private function getNumbers(): array
     {
-        $finder = new Finder();
-        // find all files in the current directory
-        $files = $finder->files()->in(__DIR__ . '/Resources/');
-        $files->name('input.txt');
-        foreach ($files->getIterator() as $fileInfo) {
-            $content = $fileInfo->getContents();
-        }
+        $content = $this->inputExtractor->getContent(__DIR__);
 
         $filtered = array_filter(
             explode("\n", $content),

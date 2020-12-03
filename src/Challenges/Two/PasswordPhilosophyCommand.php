@@ -3,20 +3,22 @@
 namespace AdventOfCode\Challenges\Two;
 
 use AdventOfCode\Challenges\Two\Service\PasswordFilterService;
+use AdventOfCode\Tools\InputExtractor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Finder\Finder;
 
 class PasswordPhilosophyCommand extends Command
 {
     protected static $defaultName = 'adventofcode:2';
 
     private PasswordFilterService $passwordFilterService;
+    private InputExtractor        $inputExtractor;
 
     public function __construct()
     {
         $this->passwordFilterService = new PasswordFilterService();
+        $this->inputExtractor        = new InputExtractor();
         parent::__construct();
     }
 
@@ -27,13 +29,7 @@ class PasswordPhilosophyCommand extends Command
 
     private function getLines(): array
     {
-        $finder = new Finder();
-        // find all files in the current directory
-        $files = $finder->files()->in(__DIR__ . '/Resources/');
-        $files->name('input.txt');
-        foreach ($files->getIterator() as $fileInfo) {
-            $content = $fileInfo->getContents();
-        }
+        $content = $this->inputExtractor->getContent(__DIR__);
 
         return array_filter(
             explode("\n", $content),
