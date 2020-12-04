@@ -4,6 +4,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use AdventOfCode\Challenges\Four\PassportProcessing;
 use AdventOfCode\Challenges\One\ReportRepairCommand;
 use AdventOfCode\Challenges\Three\TobogganTrajectoryCommand;
 use AdventOfCode\Challenges\Two\PasswordPhilosophyCommand;
@@ -16,6 +17,7 @@ $application->addCommands(
         new ReportRepairCommand(),
         new PasswordPhilosophyCommand(),
         new TobogganTrajectoryCommand(),
+        new PassportProcessing()
     ]
 );
 
