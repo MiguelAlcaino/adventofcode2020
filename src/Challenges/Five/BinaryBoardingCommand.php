@@ -30,7 +30,7 @@ class BinaryBoardingCommand extends Command
         );
     }
 
-    private function part1(array $seats, OutputInterface $output): void
+    private function part1(array $seats, OutputInterface $output): array
     {
         $ids = [];
         foreach ($seats as $seat) {
@@ -39,7 +39,19 @@ class BinaryBoardingCommand extends Command
             $ids[]  = $row * 8 + $column;
         }
 
+        asort($ids);
         $output->writeln(sprintf('The max id is %d', max($ids)));
+
+        return $ids;
+    }
+
+    private function part2(array $seats, OutputInterface $output)
+    {
+        $min         = min($seats);
+        $max         = max($seats);
+        $range       = range($min, $max);
+        $missingSeat = min(array_diff($range, $seats));
+        $output->writeln(sprintf('My seat is %d', $missingSeat));
     }
 
     private function getSeatRow(array $mysteryPositions, int $index = 0, int $length = 128)
@@ -61,8 +73,9 @@ class BinaryBoardingCommand extends Command
     {
         $seats = $this->getSeats();
 
-        $start = microtime(true);
-        $this->part1($seats, $output);
+        $start     = microtime(true);
+        $sortedIds = $this->part1($seats, $output);
+        $this->part2($sortedIds, $output);
         $diff = microtime(true) - $start;
 
         $output->writeln(sprintf('Time to calculate %s seconds', $diff));
