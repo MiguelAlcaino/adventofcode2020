@@ -1,4 +1,4 @@
-## Progress (2/25)
+## Progress (5/25)
 
 |     | Name | Command | Done    |
 | --- | -----| ------- | ------- |
