@@ -18,6 +18,11 @@ class BinaryBoardingCommand extends Command
         parent::__construct();
     }
 
+    protected function configure()
+    {
+        $this->setDescription('Advent of Code: Challenge day 5 "Binary Boarding"');
+    }
+
     private function getSeats(): array
     {
         $content = $this->inputExtractor->getContent(__DIR__);
