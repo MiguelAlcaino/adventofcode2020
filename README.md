@@ -7,7 +7,7 @@
 | 3   | Toboggan Trajectory | `./run adventofcode:3` | :star2::star2: |
 | 4   | Passport Processing | `./run adventofcode:4` | :star2::star2: |
 | 5   | Binary Boarding | `./run adventofcode:5` | :star2::star2:   |
-| 6   | Custom Customs | `./run adventofcode:6` | :star2:   |
+| 6   | Custom Customs | `./run adventofcode:6` | :star2::star2:   |
 | 7   | | | :zzz:   |
 | 8   | | | :zzz:   |
 | 9   | | | :zzz:   |
