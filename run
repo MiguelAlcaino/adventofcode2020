@@ -7,6 +7,7 @@ require __DIR__ . '/vendor/autoload.php';
 use AdventOfCode\Challenges\Five\BinaryBoardingCommand;
 use AdventOfCode\Challenges\Four\PassportProcessing;
 use AdventOfCode\Challenges\One\ReportRepairCommand;
+use AdventOfCode\Challenges\Six\CustomCustomsCommand;
 use AdventOfCode\Challenges\Three\TobogganTrajectoryCommand;
 use AdventOfCode\Challenges\Two\PasswordPhilosophyCommand;
 use Symfony\Component\Console\Application;
@@ -20,6 +21,7 @@ $application->addCommands(
         new TobogganTrajectoryCommand(),
         new PassportProcessing(),
         new BinaryBoardingCommand(),
+        new CustomCustomsCommand()
     ]
 );
 
