@@ -62,8 +62,6 @@ class HandyHaversacksCommands extends Command
             return false;
         }
 
-        // $node->getColor() === 'shiny gold'
-
         if (count($children) > 0) {
             /** @var Bag $node */
             $node = array_shift($children);
