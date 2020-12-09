@@ -9,7 +9,7 @@
 | 5   | Binary Boarding | `./run adventofcode:5` | :star2::star2:   |
 | 6   | Custom Customs | `./run adventofcode:6` | :star2::star2:   |
 | 7   | Handy Haversacks | `./run adventofcode:7` | :star2::star2:   |
-| 8   | Handheld Halting | `./run adventofcode:7` | :star2:   |
+| 8   | Handheld Halting | `./run adventofcode:8` | :star2::star2:   |
 | 9   | | | :zzz:   |
 | 10  | | | :zzz:   |
 | 11  | | | :zzz:   |
