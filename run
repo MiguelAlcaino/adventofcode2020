@@ -4,6 +4,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use AdventOfCode\Challenges\Eight\HandheldHaltingCommand;
 use AdventOfCode\Challenges\Five\BinaryBoardingCommand;
 use AdventOfCode\Challenges\Four\PassportProcessing;
 use AdventOfCode\Challenges\One\ReportRepairCommand;
@@ -24,6 +25,7 @@ $application->addCommands(
         new BinaryBoardingCommand(),
         new CustomCustomsCommand(),
         new HandyHaversacksCommands(),
+        new HandheldHaltingCommand(),
     ]
 );
 
