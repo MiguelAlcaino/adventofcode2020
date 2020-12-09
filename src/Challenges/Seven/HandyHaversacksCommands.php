@@ -36,6 +36,32 @@ class HandyHaversacksCommands extends Command
         );
     }
 
+    private function part2(array $bagRules, OutputInterface $output)
+    {
+        $bagTree = $this->getPlainBagTree($bagRules);
+
+        $amountOfBags = $this->countABag('shiny gold', 0, $bagTree);
+        $output->writeln(sprintf('The amount of bags contained in shiny gold is: %d', $amountOfBags));
+    }
+
+    private function countABag(string $color, int $amount, array $bagTree)
+    {
+        if (count($bagTree[$color]) === 0) {
+            return $amount;
+        }
+
+        $sum = 0;
+        foreach ($bagTree[$color] as $indexColor => $indexAmount) {
+            $sum = $this->countABag($indexColor, $indexAmount, $bagTree) + $sum;
+        }
+
+        if ($amount === 0) {
+            return $sum;
+        }
+
+        return $amount + $amount * $sum;
+    }
+
     private function part1(array $bagRules, OutputInterface $output)
     {
         $bagTree = $this->getBagTree($bagRules);
@@ -92,10 +118,10 @@ class HandyHaversacksCommands extends Command
      *
      * @return Bag[]
      */
-    public function getConnectedChildren(array $nodes, array $bagTree): array
+    public function getConnectedChildren(array $children, array $bagTree): array
     {
         $completeNodes = [];
-        foreach ($nodes as $node) {
+        foreach ($children as $node) {
             $completeNodes[$node->getColor()] = $bagTree[$node->getColor()];
         }
 
@@ -127,13 +153,34 @@ class HandyHaversacksCommands extends Command
         return $bagRuleInstances;
     }
 
+    private function getPlainBagTree(array $bagRules): array
+    {
+        $bagRuleInstances = [];
+        foreach ($bagRules as $bagRule) {
+            $colorAndContainment = explode(' bags contain ', $bagRule);
+
+            $matches = [];
+            preg_match_all("/(\d)\s(\w+\s\w+)/", $colorAndContainment[1], $matches);
+
+            $children = [];
+            if (count($matches[1]) > 0) {
+                foreach ($matches[1] as $key => $amount) {
+                    $children[$matches[2][$key]] = (int)$amount;
+                }
+            }
+            $bagRuleInstances[$colorAndContainment[0]] = $children;
+        }
+
+        return $bagRuleInstances;
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $bagRules = $this->getBagRules();
 
         $start = microtime(true);
-        // $this->part1($bagRules, $output);
-        $this->printFromBagRules($bagRules, $output);
+        $this->part1($bagRules, $output);
+        $this->part2($bagRules, $output);
         $diff = microtime(true) - $start;
 
         $output->writeln(sprintf('Time to calculate %s seconds', $diff));
