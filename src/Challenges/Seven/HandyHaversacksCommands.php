@@ -62,12 +62,10 @@ class HandyHaversacksCommands extends Command
             return false;
         }
 
-        if (count($children) > 0) {
-            /** @var Bag $node */
-            $node = array_shift($children);
+        /** @var Bag $node */
+        $node = array_shift($children);
 
-            return $node->getColor() === 'shiny gold' || $this->hasShinyBag($node->getChildren(), $bagTree) || $this->hasShinyBag($children, $bagTree);
-        }
+        return $node->getColor() === 'shiny gold' || $this->hasShinyBag($node->getChildren(), $bagTree) || $this->hasShinyBag($children, $bagTree);
     }
 
     /**
