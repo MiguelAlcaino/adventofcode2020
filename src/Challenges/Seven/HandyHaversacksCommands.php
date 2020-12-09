@@ -50,6 +50,25 @@ class HandyHaversacksCommands extends Command
         $output->writeln(sprintf('Count: %d', $count));
     }
 
+    private function printFromBagRules(array $bagRules, OutputInterface $output)
+    {
+        $bagTree = $this->getBagTree($bagRules);
+
+        foreach ($bagTree as $bag) {
+            $childrenString = '';
+            if (count($bag->getChildren()) === 0) {
+                $childrenString = ' no other bags';
+            } else {
+                foreach ($bag->getChildren() as $child) {
+                    $childrenString .= sprintf(' %d %s %s,', $child->getAmount(), $child->getColor(), $child->getAmount() === 1 ? 'bag' : 'bags');
+                }
+                $childrenString = substr($childrenString, 0, -1);
+            }
+
+            $output->writeln(sprintf('%s bags contain%s.', $bag->getColor(), $childrenString));
+        }
+    }
+
     /**
      * @param Bag[] $bagTree
      *
@@ -113,7 +132,8 @@ class HandyHaversacksCommands extends Command
         $bagRules = $this->getBagRules();
 
         $start = microtime(true);
-        $this->part1($bagRules, $output);
+        // $this->part1($bagRules, $output);
+        $this->printFromBagRules($bagRules, $output);
         $diff = microtime(true) - $start;
 
         $output->writeln(sprintf('Time to calculate %s seconds', $diff));
