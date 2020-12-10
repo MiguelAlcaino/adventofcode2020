@@ -10,7 +10,7 @@
 | 6   | Custom Customs | `./run adventofcode:6` | :star2::star2:   |
 | 7   | Handy Haversacks | `./run adventofcode:7` | :star2::star2:   |
 | 8   | Handheld Halting | `./run adventofcode:8` | :star2::star2:   |
-| 9   | | | :zzz:   |
+| 9   | Encoding Error | `./run adventofcode:9` | :star2:  |
 | 10  | | | :zzz:   |
 | 11  | | | :zzz:   |
 | 12  | | | :zzz:   |
