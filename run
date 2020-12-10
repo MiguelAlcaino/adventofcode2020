@@ -7,6 +7,7 @@ require __DIR__ . '/vendor/autoload.php';
 use AdventOfCode\Challenges\Eight\HandheldHaltingCommand;
 use AdventOfCode\Challenges\Five\BinaryBoardingCommand;
 use AdventOfCode\Challenges\Four\PassportProcessing;
+use AdventOfCode\Challenges\Nine\EncodingErrorCommand;
 use AdventOfCode\Challenges\One\ReportRepairCommand;
 use AdventOfCode\Challenges\Seven\HandyHaversacksCommands;
 use AdventOfCode\Challenges\Six\CustomCustomsCommand;
@@ -26,6 +27,7 @@ $application->addCommands(
         new CustomCustomsCommand(),
         new HandyHaversacksCommands(),
         new HandheldHaltingCommand(),
+        new EncodingErrorCommand(),
     ]
 );
 
