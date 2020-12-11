@@ -44,16 +44,50 @@ class EncodingErrorCommand extends Command
         $length = 25;
         $offset = 0;
         for ($i = $length; $i < count($numbers); $i++) {
-            if (null === $this->findToNumbersThatSum($numbers[$i], array_slice($numbers, $offset, $length))) {
+            if (null === $this->findTwoNumbersThatSum($numbers[$i], array_slice($numbers, $offset, $length))) {
                 $output->writeln(sprintf('The number not found: %d', $numbers[$i]));
 
-                return;
+                return $numbers[$i];
             }
             $offset++;
         }
     }
 
-    private function findToNumbersThatSum(int $numberToFind, array $numbers): ?array
+    public function part2(int $numberToFind, array $numbers, OutputInterface $output)
+    {
+        $numbers = array_reverse($numbers);
+        $index   = array_search($numberToFind, $numbers);
+        $index++;
+        $contiguousNumbers = [];
+        while (count($numbers) > 0) {
+            $contiguousNumbers = $this->findContiguousNumbersThatSum($numberToFind, array_slice($numbers, $index));
+            $index++;
+            if (null !== $contiguousNumbers) {
+                break;
+            }
+        }
+
+        $output->writeln(sprintf('The sum of the smallest and the highest numbers is: %d', (min($contiguousNumbers) + max($contiguousNumbers))));
+    }
+
+    public function findContiguousNumbersThatSum(int $numberToFind, array $numbers)
+    {
+        $sum               = 0;
+        $contiguousNumbers = [];
+        foreach ($numbers as $number) {
+            $contiguousNumbers[] = $number;
+            $sum                 = $number + $sum;
+            if ($sum === $numberToFind) {
+                return $contiguousNumbers;
+            }
+
+            if ($sum > $numberToFind) {
+                return null;
+            }
+        }
+    }
+
+    private function findTwoNumbersThatSum(int $numberToFind, array $numbers): ?array
     {
         foreach ($numbers as $key => $number) {
             if ($number >= $numberToFind) {
@@ -75,10 +109,11 @@ class EncodingErrorCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $numbers = $this->getNumbers();
-        $start   = microtime(true);
-        $this->part1($numbers, $output);
+        $numbers      = $this->getNumbers();
+        $start        = microtime(true);
+        $numberToFind = $this->part1($numbers, $output);
 
+        $this->part2($numberToFind, $numbers, $output);
         $diff = microtime(true) - $start;
 
         $output->writeln(sprintf('Time to calculate %s seconds', $diff));
