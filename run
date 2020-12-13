@@ -5,6 +5,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use AdventOfCode\Challenges\Eight\HandheldHaltingCommand;
+use AdventOfCode\Challenges\Eleven\SeatingSystemCommand;
 use AdventOfCode\Challenges\Five\BinaryBoardingCommand;
 use AdventOfCode\Challenges\Four\PassportProcessing;
 use AdventOfCode\Challenges\Nine\EncodingErrorCommand;
@@ -30,6 +31,7 @@ $application->addCommands(
         new HandheldHaltingCommand(),
         new EncodingErrorCommand(),
         new AdapterArrayCommand(),
+        new SeatingSystemCommand(),
     ]
 );
 
