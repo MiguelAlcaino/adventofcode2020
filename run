@@ -14,6 +14,7 @@ use AdventOfCode\Challenges\Seven\HandyHaversacksCommands;
 use AdventOfCode\Challenges\Six\CustomCustomsCommand;
 use AdventOfCode\Challenges\Ten\AdapterArrayCommand;
 use AdventOfCode\Challenges\Three\TobogganTrajectoryCommand;
+use AdventOfCode\Challenges\Twelve\RainRiskCommand;
 use AdventOfCode\Challenges\Two\PasswordPhilosophyCommand;
 use Symfony\Component\Console\Application;
 
@@ -32,6 +33,7 @@ $application->addCommands(
         new EncodingErrorCommand(),
         new AdapterArrayCommand(),
         new SeatingSystemCommand(),
+        new RainRiskCommand(),
     ]
 );
 
