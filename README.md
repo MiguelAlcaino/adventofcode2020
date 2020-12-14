@@ -12,7 +12,7 @@
 | 8   | Handheld Halting | `./run adventofcode:8` | :star2::star2:   |
 | 9   | Encoding Error | `./run adventofcode:9` | :star2::star2:  |
 | 10  | Adapter Array | `./run adventofcode:10` | :star2::star2:   |
-| 11  | Seating System | `./run adventofcode:11` | :star2:   |
+| 11  | Seating System | `./run adventofcode:11` | :star2::star2:   |
 | 12  | | | :zzz:   |
 | 13  | | | :zzz:   |
 | 14  | | | :zzz:   |
