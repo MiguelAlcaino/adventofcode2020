@@ -13,6 +13,7 @@ use AdventOfCode\Challenges\One\ReportRepairCommand;
 use AdventOfCode\Challenges\Seven\HandyHaversacksCommands;
 use AdventOfCode\Challenges\Six\CustomCustomsCommand;
 use AdventOfCode\Challenges\Ten\AdapterArrayCommand;
+use AdventOfCode\Challenges\Thirteen\ShuttleSearchCommand;
 use AdventOfCode\Challenges\Three\TobogganTrajectoryCommand;
 use AdventOfCode\Challenges\Twelve\RainRiskCommand;
 use AdventOfCode\Challenges\Two\PasswordPhilosophyCommand;
@@ -34,6 +35,7 @@ $application->addCommands(
         new AdapterArrayCommand(),
         new SeatingSystemCommand(),
         new RainRiskCommand(),
+        new ShuttleSearchCommand(),
     ]
 );
 
