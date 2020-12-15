@@ -4,6 +4,7 @@ namespace AdventOfCode\Challenges\Twelve;
 
 use AdventOfCode\Challenges\Twelve\Model\Movement;
 use AdventOfCode\Challenges\Twelve\Model\Ship;
+use AdventOfCode\Challenges\Twelve\Model\Waypoint;
 use AdventOfCode\Tools\InputExtractor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,7 +39,7 @@ class RainRiskCommand extends Command
         $movements = $this->getMovements();
         $start     = microtime(true);
         $this->part1($movements);
-
+        $this->part2($movements);
         $diff = microtime(true) - $start;
 
         $output->writeln(sprintf('Time to calculate %s seconds', $diff));
@@ -73,8 +74,22 @@ class RainRiskCommand extends Command
         $ship = new Ship();
         foreach ($movements as $movement) {
             $ship->move($movement);
-            $this->output->writeln(sprintf('Movement: %s%d - Ship: %s', $movement->getAction(), $movement->getValue(), $ship->getPosition()));
+            // $this->output->writeln(sprintf('Movement: %s%d - Ship: %s', $movement->getAction(), $movement->getValue(), $ship->getPosition()));
         }
         $this->output->writeln(sprintf('The sum of values for part 1: %d', abs($ship->getX()) + abs($ship->getY())));
+    }
+
+    /**
+     * @param Movement[] $movements
+     */
+    private function part2(array $movements)
+    {
+        $ship = new Ship();
+        $ship->setWaypoint(new Waypoint(10, 1));
+        foreach ($movements as $movement) {
+            $ship->move2($movement);
+            // $this->output->writeln(sprintf('Movement: %s%d - Ship: %s - %s', $movement->getAction(), $movement->getValue(), $ship->getPosition(), $ship->getWaypoint()->getPosition()));
+        }
+        $this->output->writeln(sprintf('The sum of values for part 2: %d', abs($ship->getX()) + abs($ship->getY())));
     }
 }

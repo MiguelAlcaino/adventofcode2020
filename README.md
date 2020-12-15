@@ -1,4 +1,4 @@
-## Progress (11/25)
+## Progress (12/25)
 
 |     | Name | Command | Done    |
 | --- | -----| ------- | ------- |
@@ -13,7 +13,7 @@
 | 9   | Encoding Error | `./run adventofcode:9` | :star2::star2:  |
 | 10  | Adapter Array | `./run adventofcode:10` | :star2::star2:   |
 | 11  | Seating System | `./run adventofcode:11` | :star2::star2:   |
-| 12  | Rain Risk | `./run adventofcode:12` | :star2:   |
+| 12  | Rain Risk | `./run adventofcode:12` | :star2::star2:   |
 | 13  | | | :zzz:   |
 | 14  | | | :zzz:   |
 | 15  | | | :zzz:   |
