@@ -70,86 +70,19 @@ class ShuttleSearchCommand extends Command
             $buses[] = new Bus($id, $offset);
         }
 
-        usort(
-            $buses,
-            function (Bus $a, Bus $b) {
-                return $a->getId() > $b->getId() ? -1 : 1;
+        $t = 1;
+        /**
+         * @var int $w Offset used to make $t jump
+         */
+        $w = 1;
+        foreach ($buses as $bus) {
+            while (($bus->getOffset() + $t) % $bus->getId() !== 0) {
+                $t += $w;
             }
-        );
-
-        $first  = array_shift($buses);
-        $second = array_shift($buses);
-        $a      = 1;
-        while (true) {
-            $divisor = $second->getId() * $a - $second->getOffset() + $first->getOffset();
-            if ($divisor % $first->getId() === 0) {
-                $d = $divisor / $first->getId();
-                $t = ($d * $first->getId()) - $first->getOffset();
-
-                $found = true;
-                $this->output->writeln(sprintf('t:%d', $t));
-                foreach ($buses as $bus) {
-                    if (($t + $bus->getOffset()) % $bus->getId() !== 0) {
-                        $found = false;
-                        break;
-                    }
-                }
-
-                if ($found) {
-                    $this->output->writeln(sprintf('final t:%d', $t));
-
-                    return;
-                }
-            }
-            $a++;
+            $w *= $bus->getId();
         }
 
-        // while (true) {
-        //     $divisor = (1789 * $a + 3);
-        //     if ($divisor % 1889 === 0) {
-        //         $d = $divisor / 1889;
-        //         $t = ($d * 1889) - 3;
-        //         $this->output->writeln(sprintf('t:%d', $t));
-        //         $hola = 1;
-        //         if (($t + 2) % 47 == 0 && ($t + 1) % 37 === 0 && $t % 1789 === 0) {
-        //             $ganamos = true;
-        //         }
-        //     }
-        //     $a++;
-        // }
-        //
-        // $previousShuttle = array_shift($buses);
-        //
-        // $i             = 1;
-        // $hasTCandidate = true;
-        // // $t             = $previousShuttle->getId() * $i;
-        // foreach ($buses as $bus) {
-        //     while (true) {
-        //         $t = $previousShuttle->getId() * $i;
-        //         $f = $t + $bus->getOffset();
-        //         if ($f % $bus->getId() === 0) {
-        //             $this->output->writeln(sprintf('t=%d with i=%d', $t, $i));
-        //         }
-        //         $i++;
-        //     }
-        // }
-        // foreach ($buses as $bus) {
-        //     while (true) {
-        //         if (!$hasTCandidate) {
-        //             $t = $previousShuttle->getId() * $i;
-        //         }
-        //         $f = $t + $bus->getOffset();
-        //         if ($f % $bus->getId() === 0) {
-        //             $i             = $t;
-        //             $hasTCandidate = true;
-        //             break;
-        //         } else {
-        //             $hasTCandidate = false;
-        //         }
-        //
-        //         $i++;
-        //     }
-        // }
+        $this->output->writeln(sprintf('part2: t: %d', $t));
     }
 
     private function getBuses(string $lineWithBuses)
