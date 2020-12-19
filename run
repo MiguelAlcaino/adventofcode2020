@@ -8,6 +8,7 @@ use AdventOfCode\Challenges\Eight\HandheldHaltingCommand;
 use AdventOfCode\Challenges\Eleven\SeatingSystemCommand;
 use AdventOfCode\Challenges\Five\BinaryBoardingCommand;
 use AdventOfCode\Challenges\Four\PassportProcessing;
+use AdventOfCode\Challenges\Fourteen\DockingDataCommand;
 use AdventOfCode\Challenges\Nine\EncodingErrorCommand;
 use AdventOfCode\Challenges\One\ReportRepairCommand;
 use AdventOfCode\Challenges\Seven\HandyHaversacksCommands;
@@ -36,6 +37,7 @@ $application->addCommands(
         new SeatingSystemCommand(),
         new RainRiskCommand(),
         new ShuttleSearchCommand(),
+        new DockingDataCommand(),
     ]
 );
 

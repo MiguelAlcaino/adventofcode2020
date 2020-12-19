@@ -15,7 +15,7 @@
 | 11  | Seating System | `./run adventofcode:11` | :star2::star2:   |
 | 12  | Rain Risk | `./run adventofcode:12` | :star2::star2:   |
 | 13  | Shuttle Search | `./run adventofcode:13` | :star2::star2:   |
-| 14  | | | :zzz:   |
+| 14  | Docking Data | `./run adventofcode:13` | :star2:   |
 | 15  | | | :zzz:   |
 | 16  | | | :zzz:   |
 | 17  | | | :zzz:   |
